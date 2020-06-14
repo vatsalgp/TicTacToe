@@ -1,9 +1,17 @@
+/*
+    Rows and Cols start from 1.
+    X starts first.
+    X -> 1
+    O -> -1
+*/
+
 import java.util.Scanner;
 
 public class TicTacToe {
     private static int[][] matrix = new int[3][3];
     private static int move = 1;
     private static State state = State.Empty;
+    final private static Scanner scanner = new Scanner(System.in);
 
     private static enum State {
         X("X wins"), O("O wins"), Draw("Draw"), Empty("Game not finished"), Impossible("Impossible");
@@ -34,49 +42,20 @@ public class TicTacToe {
     }
 
     private static void updateMatrix() {
-        Scanner scanner = new Scanner(System.in);
-        int x;
-        int y;
         while (true) {
             System.out.print("Enter the coordinates: ");
-            String first = scanner.next();
-            String second = scanner.next();
-            if (isNumeric(first) && isNumeric(second)) {
-                y = Integer.parseInt(first);
-                x = Integer.parseInt(second);
-                x--;
-                y--;
-                if (x == 0)
-                    x = 2;
-                else if (x == 2)
-                    x = 0;
-                if (!(x >= 0 && x <= 2 && y >= 0 && y <= 2))
-                    System.out.println("Invalid cell");
-                else if (matrix[x][y] != 0)
-                    System.out.println("This cell is occupied! Choose another one!");
-                else
-                    break;
-            } else {
-                System.out.println("Enter a number");
+            int x = scanner.nextInt() - 1;
+            int y = scanner.nextInt() - 1;
+            if (!(x >= 0 && x <= 2 && y >= 0 && y <= 2))
+                System.out.println("Invalid cell");
+            else if (matrix[x][y] != 0)
+                System.out.println("This cell is occupied! Choose another one!");
+            else {
+                matrix[x][y] = move;
+                move *= -1;
+                return;
             }
         }
-
-        matrix[x][y] = move;
-        move *= -1;
-
-        scanner.close();
-    }
-
-    private static boolean isNumeric(String strNum) {
-        if (strNum == null) {
-            return false;
-        }
-        try {
-            Integer.parseInt(strNum);
-        } catch (NumberFormatException nfe) {
-            return false;
-        }
-        return true;
     }
 
     private static void printMatrix() {
@@ -151,7 +130,6 @@ public class TicTacToe {
             for (int j = 0; j < 3; j++)
                 if (matrix[i][j] == c)
                     out++;
-
         return out;
     }
 

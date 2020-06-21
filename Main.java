@@ -1,38 +1,12 @@
+package tictactoe;
+
 import java.util.Scanner;
 
-public class TicTacToe {
+public class Main {
     private static Position[][] matrix = new Position[3][3];
     private static Position move = Position.X;
     private static GameState state = GameState.OnGoing;
     final private static Scanner scanner = new Scanner(System.in);
-
-    private static enum Position {
-        Empty(" "), X("X"), O("O");
-
-        private String value;
-
-        Position(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-    }
-
-    private static enum GameState {
-        X("X wins"), O("O wins"), Draw("Draw"), OnGoing("Game not finished"), Impossible("Impossible");
-
-        private String value;
-
-        GameState(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-    }
 
     public static void main(String[] args) {
         initMatrix();

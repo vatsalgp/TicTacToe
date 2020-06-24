@@ -1,4 +1,6 @@
-package tictactoe;
+package tictactoe.game.status;
+
+import tictactoe.game.Position;
 
 public class GameCheck {
     final private Position[][] matrix;

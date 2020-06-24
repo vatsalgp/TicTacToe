@@ -1,7 +1,8 @@
-package tictactoe.player;
+package tictactoe.player.user;
 
 import java.util.Scanner;
-import tictactoe.Position;
+import tictactoe.game.Position;
+import tictactoe.player.Player;
 
 public class User extends Player {
     public User(Position position) {

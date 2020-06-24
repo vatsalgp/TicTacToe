@@ -1,6 +1,6 @@
-package tictactoe.player;
+package tictactoe.player.ai;
 
-import tictactoe.Position;
+import tictactoe.game.Position;
 
 public class AIMedium extends AI {
 

@@ -1,20 +1,21 @@
 package tictactoe.player;
 
-import tictactoe.Position;
+import tictactoe.game.Position;
 
-class Move {
-    int x = 0;
-    int y = 0;
-    int countX = 0;
+public class Move {
+    public int x = 0;
+    public int y = 0;
+    public int countX = 0;
 
-    Move() {
+    public Move(int countX) {
+        this.countX = countX;
     }
 
-    Move(Position position) {
+    public Move(Position position) {
         counter(position);
     }
 
-    int counter(Position position) {
+    public int counter(Position position) {
         switch (position) {
             case X:
                 return ++countX;

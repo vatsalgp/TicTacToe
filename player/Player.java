@@ -1,6 +1,6 @@
 package tictactoe.player;
 
-import tictactoe.Position;
+import tictactoe.game.Position;
 
 public abstract class Player {
 

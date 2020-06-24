@@ -1,6 +1,9 @@
-package tictactoe.player;
+package tictactoe.player.factory;
 
-import tictactoe.Position;
+import tictactoe.game.Position;
+import tictactoe.player.Player;
+import tictactoe.player.ai.*;
+import tictactoe.player.user.User;
 
 public class PlayerFactory {
 

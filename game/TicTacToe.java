@@ -1,7 +1,11 @@
-package tictactoe;
+package tictactoe.game;
 
 import java.util.Scanner;
+
+import tictactoe.game.status.GameCheck;
+import tictactoe.game.status.GameState;
 import tictactoe.player.*;
+import tictactoe.player.factory.PlayerFactory;
 
 public class TicTacToe {
     private static Position[][] matrix = new Position[3][3];
@@ -22,21 +26,21 @@ public class TicTacToe {
         O = yFactory.newPlayer(scanner.next());
     }
 
-    static void printState() {
+    public static void printState() {
         System.out.println(state.getValue());
     }
 
-    static void initMatrix() {
+    public static void initMatrix() {
         for (int i = 0; i < 3; i++)
             for (int j = 0; j < 3; j++)
                 matrix[i][j] = Position.Empty;
     }
 
-    static boolean hasGameEnded() {
+    public static boolean hasGameEnded() {
         return state == GameState.X || state == GameState.O || state == GameState.Draw;
     }
 
-    static void updateMatrix() {
+    public static void updateMatrix() {
         if (move == Position.X)
             matrix = X.nextMove(matrix);
         else
@@ -44,7 +48,7 @@ public class TicTacToe {
         move = Position.Flip(move);
     }
 
-    static void printMatrix() {
+    public static void printMatrix() {
         System.out.println("---------");
         for (Position[] row : matrix) {
             System.out.print("| ");
@@ -55,7 +59,7 @@ public class TicTacToe {
         System.out.println("---------");
     }
 
-    static void updateState() {
+    public static void updateState() {
         GameCheck game = new GameCheck(matrix);
         state = game.getState();
     }

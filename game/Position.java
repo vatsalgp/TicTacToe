@@ -1,4 +1,4 @@
-package tictactoe;
+package tictactoe.game;
 
 public enum Position {
     Empty(" "), X("X"), O("O");

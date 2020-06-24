@@ -1,6 +1,7 @@
-package tictactoe.player;
+package tictactoe.player.ai;
 
-import tictactoe.Position;
+import tictactoe.game.Position;
+import tictactoe.player.Player;
 
 public abstract class AI extends Player {
 

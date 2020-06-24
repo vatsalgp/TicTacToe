@@ -1,9 +1,12 @@
-package tictactoe.player;
+package tictactoe.player.ai;
 
-import tictactoe.Position;
-import tictactoe.GameCheck;
+import tictactoe.game.Position;
+import tictactoe.game.status.GameCheck;
+import tictactoe.player.Move;
 
 public class AIHard extends AI {
+
+    static long fc = 0;
 
     public AIHard(Position position) {
         super(position);
@@ -18,6 +21,7 @@ public class AIHard extends AI {
     }
 
     private Move minimax(Position[][] matrix, Position player) {
+        fc++;
         GameCheck game = new GameCheck(matrix);
         if (game.checkForWin(player))
             return new Move(player);
@@ -40,15 +44,13 @@ public class AIHard extends AI {
             }
         }
         if (player == Position.O) {
-            Move bestMove = new Move();
-            bestMove.countX = Integer.MAX_VALUE;
+            Move bestMove = new Move(Integer.MAX_VALUE);
             for (Move move : moves)
                 if (move.countX < bestMove.countX)
                     bestMove = move;
             return bestMove;
         } else {
-            Move bestMove = new Move();
-            bestMove.countX = Integer.MIN_VALUE;
+            Move bestMove = new Move(Integer.MIN_VALUE);
             for (Move move : moves)
                 if (move.countX > bestMove.countX)
                     bestMove = move;

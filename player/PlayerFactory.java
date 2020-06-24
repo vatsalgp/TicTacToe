@@ -14,8 +14,12 @@ public class PlayerFactory {
         switch (string.toLowerCase()) {
             case "user":
                 return new User(choice);
+            case "easy":
+                return new AIEasy(choice);
+            case "medium":
+                return new AIMedium(choice);
             default:
-                return new AI(choice);
+                return new AIMedium(choice);
         }
     }
 }

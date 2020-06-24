@@ -1,6 +1,6 @@
 package tictactoe;
 
-enum Position {
+public enum Position {
     Empty(" "), X("X"), O("O");
 
     private String value;
@@ -9,11 +9,22 @@ enum Position {
         this.value = value;
     }
 
-    String getValue() {
+    public String getValue() {
         return value;
     }
 
-    static Position setValue(char val) {
+    public static Position Flip(Position value) {
+        switch (value) {
+            case X:
+                return O;
+            case O:
+                return X;
+            default:
+                return Empty;
+        }
+    }
+
+    public static Position setValue(char val) {
         switch (val) {
             case 'X':
                 return X;
@@ -23,4 +34,5 @@ enum Position {
                 return Empty;
         }
     }
+
 }

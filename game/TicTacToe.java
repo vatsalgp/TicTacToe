@@ -1,7 +1,6 @@
 package tictactoe.game;
 
-import java.util.Scanner;
-
+import tictactoe.io.Input;
 import tictactoe.game.status.GameCheck;
 import tictactoe.game.status.GameState;
 import tictactoe.player.*;
@@ -13,7 +12,6 @@ public class TicTacToe {
     private static GameState state = GameState.OnGoing;
     private static Player X;
     private static Player O;
-    final private static Scanner scanner = new Scanner(System.in);
 
     public static void getInput() {
         System.out.println("Welcome to TicTacToe");
@@ -22,9 +20,9 @@ public class TicTacToe {
         System.out.println("Your choices are user, easy, medium, hard ");
         System.out.println("X Goes First");
         System.out.print("Choose for X: ");
-        String first = scanner.nextLine();
+        String first = Input.nextLine();
         System.out.print("Choose for O: ");
-        String second = scanner.nextLine();
+        String second = Input.nextLine();
         PlayerFactory xFactory = new PlayerFactory(Position.X);
         PlayerFactory yFactory = new PlayerFactory(Position.O);
         X = xFactory.newPlayer(first);

@@ -1,12 +1,10 @@
 package tictactoe.player.user;
 
-import java.util.Scanner;
+import tictactoe.io.Input;
 import tictactoe.game.Position;
 import tictactoe.player.Player;
 
 public class User extends Player {
-    final private static Scanner scanner = new Scanner(System.in);
-
     public User(Position position) {
         super(position);
     }
@@ -15,10 +13,10 @@ public class User extends Player {
     public Position[][] nextMove(Position[][] matrix) {
         while (true) {
             System.out.print("Enter row(1, 2, 3): ");
-            String first = scanner.next();
+            String first = Input.nextLine();
             System.out.print("Enter col(1, 2, 3): ");
-            String second = scanner.next();
-            if (isNumber(first) && isNumber(second)) {
+            String second = Input.nextLine();
+            if (Input.isNumber(first) && Input.isNumber(second)) {
                 int x = Integer.parseInt(first) - 1;
                 int y = Integer.parseInt(second) - 1;
                 if (!(x >= 0 && x <= 2 && y >= 0 && y <= 2))
@@ -29,19 +27,9 @@ public class User extends Player {
                     matrix[x][y] = choice;
                     return matrix;
                 }
-            } else {
+            } else
                 System.out.println("You should enter numbers!");
-                continue;
-            }
         }
     }
 
-    private static boolean isNumber(String string) {
-        try {
-            Integer.parseInt(string);
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-    }
 }

@@ -16,14 +16,19 @@ public class TicTacToe {
     final private static Scanner scanner = new Scanner(System.in);
 
     public static void getInput() {
-        System.out.print("Input command: ");
-        String mode = scanner.next();
-        if (mode.equals("exit"))
-            System.exit(0);
+        System.out.println("Welcome to TicTacToe");
+        System.out.println("The Game can be played against \'user\' or against AI");
+        System.out.println("In case of AI you can go against \'easy\', \'medium\' or \'hard\'");
+        System.out.println("Your choices are user, easy, medium, hard ");
+        System.out.println("X Goes First");
+        System.out.print("Choose for X: ");
+        String first = scanner.nextLine();
+        System.out.print("Choose for O: ");
+        String second = scanner.nextLine();
         PlayerFactory xFactory = new PlayerFactory(Position.X);
         PlayerFactory yFactory = new PlayerFactory(Position.O);
-        X = xFactory.newPlayer(scanner.next());
-        O = yFactory.newPlayer(scanner.next());
+        X = xFactory.newPlayer(first);
+        O = yFactory.newPlayer(second);
     }
 
     public static void printState() {

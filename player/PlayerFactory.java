@@ -18,8 +18,10 @@ public class PlayerFactory {
                 return new AIEasy(choice);
             case "medium":
                 return new AIMedium(choice);
+            case "hard":
+                return new AIHard(choice);
             default:
-                return new AIMedium(choice);
+                return null;
         }
     }
 }

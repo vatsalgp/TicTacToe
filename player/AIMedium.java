@@ -8,6 +8,21 @@ public class AIMedium extends AI {
         super(position);
     }
 
+    @Override
+    public Position[][] nextMove(Position[][] matrix) {
+        System.out.println("Making move level \"medium\"");
+        if (checkHorizontal(matrix))
+            return alterHorizontal(matrix);
+        else if (checkVertical(matrix))
+            return alterVertical(matrix);
+        else if (checkDiagPrim(matrix))
+            return alterDiagPrim(matrix);
+        else if (checkDiagSec(matrix))
+            return alterDiagSec(matrix);
+        else
+            return makeRandomMove(matrix);
+    }
+
     private boolean checkHorizontal(Position[][] matrix) {
         for (int i = 0; i < 3; i++) {
             int x = 0;
@@ -168,20 +183,5 @@ public class AIMedium extends AI {
             }
         }
         return matrix;
-    }
-
-    @Override
-    public Position[][] nextMove(Position[][] matrix) {
-        System.out.println("Making move level \"medium\"");
-        if (checkHorizontal(matrix))
-            return alterHorizontal(matrix);
-        else if (checkVertical(matrix))
-            return alterVertical(matrix);
-        else if (checkDiagPrim(matrix))
-            return alterDiagPrim(matrix);
-        else if (checkDiagSec(matrix))
-            return alterDiagSec(matrix);
-        else
-            return makeRandomMove(matrix);
     }
 }

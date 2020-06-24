@@ -56,62 +56,7 @@ public class TicTacToe {
     }
 
     static void updateState() {
-        if (checkForWinForX() && checkForWinForO() || Math.abs(countX() - countO()) > 1)
-            state = GameState.Impossible;
-        else if (checkForWinForX())
-            state = GameState.X;
-        else if (checkForWinForO())
-            state = GameState.O;
-        else if (hasEmptyCells())
-            state = GameState.OnGoing;
-        else
-            state = GameState.Draw;
-    }
-
-    private static boolean checkForWin(Position pos) {
-        for (int i = 0; i < 3; i++)
-            if (matrix[i][0] == pos && matrix[i][1] == pos && matrix[i][2] == pos)
-                return true;
-        for (int i = 0; i < 3; i++)
-            if (matrix[0][i] == pos && matrix[1][i] == pos && matrix[2][i] == pos)
-                return true;
-        if (matrix[0][0] == pos && matrix[1][1] == pos && matrix[2][2] == pos)
-            return true;
-        if (matrix[0][2] == pos && matrix[1][1] == pos && matrix[2][0] == pos)
-            return true;
-        return false;
-    }
-
-    private static boolean checkForWinForX() {
-        return checkForWin(Position.X);
-    }
-
-    private static boolean checkForWinForO() {
-        return checkForWin(Position.O);
-    }
-
-    private static boolean hasEmptyCells() {
-        for (Position[] row : matrix)
-            for (Position pos : row)
-                if (pos == Position.Empty)
-                    return true;
-        return false;
-    }
-
-    private static int count(Position givenPos) {
-        int out = 0;
-        for (Position[] row : matrix)
-            for (Position pos : row)
-                if (pos == givenPos)
-                    out++;
-        return out;
-    }
-
-    private static int countX() {
-        return count(Position.X);
-    }
-
-    private static int countO() {
-        return count(Position.O);
+        GameCheck game = new GameCheck(matrix);
+        state = game.getState();
     }
 }

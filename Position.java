@@ -12,4 +12,15 @@ enum Position {
     String getValue() {
         return value;
     }
+
+    static Position setValue(char val) {
+        switch (val) {
+            case 'X':
+                return X;
+            case 'O':
+                return O;
+            default:
+                return Empty;
+        }
+    }
 }
